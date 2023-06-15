@@ -1,0 +1,620 @@
+Windows PowerShell
+版权所有（C） Microsoft Corporation。保留所有权利。
+
+安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows
+
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python
+Python 3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sys
+>>> sys.path.append('D:\工作\BrainCo\EnCodec_Trainer-master')
+>>> exit()t
+  File "<stdin>", line 1
+    exit()t
+          ^
+SyntaxError: invalid syntax
+>>> exit()
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 107, in train
+    for batch_idx, input_wav in enumerate(trainloader):
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\utils\data\dataloader.py", line 633, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\utils\data\dataloader.py", line 677, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\utils\data\_utils\fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\utils\data\_utils\fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\customAudioDataset.py", line 23, in __getitem__
+    waveform, sample_rate = torchaudio.load(audio_path)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torchaudio\_backend\utils.py", line 446, in load
+    return backend.load(uri, frame_offset, num_frames, normalize, channels_first, format, buffer_size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torchaudio\_backend\utils.py", line 236, in load
+    return soundfile_backend.load(uri, frame_offset, num_frames, normalize, channels_first, format)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torchaudio\backend\soundfile_backend.py", line 221, in load
+    with soundfile.SoundFile(filepath, "r") as file_:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\soundfile.py", line 658, in __init__
+    self._file = self._open(file, mode_int, closefd)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\soundfile.py", line 1216, in _open
+    raise LibsndfileError(err, prefix="Error opening {0!r}: ".format(self.name))
+soundfile.LibsndfileError: Error opening 'datasets/e-gmd-v1.0.0\\drummer7/session2/104_pop_132_beat_4-4_21.wav': System error.
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 35, in total_loss
+    fft = Audio2Mel(win_length=2 ** i, hop_length=2 ** i // 4, n_mel_channels=64, sampling_rate=sample_rate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 25, in __init__
+    mel_basis = librosa_mel_fn(
+                ^^^^^^^^^^^^^^^
+TypeError: mel() takes 0 positional arguments but 5 were given
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 35, in total_loss
+    fft = Audio2Mel(win_length=2 ** i, hop_length=2 ** i // 4, n_mel_channels=64, sampling_rate=sample_rate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 25, in __init__
+    mel_basis = librosa_mel_fn(
+                ^^^^^^^^^^^^^^^
+TypeError: mel() takes 0 positional arguments but 3 were given
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 35, in total_loss
+    fft = Audio2Mel(win_length=2 ** i, hop_length=2 ** i // 4, n_mel_channels=64, sampling_rate=sample_rate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 26, in __init__
+    mel_basis = librosa.filters.mel(
+                ^^^^^^^^^^^^^^^^^^^^
+TypeError: mel() takes 0 positional arguments but 5 were given
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 35, in total_loss
+    fft = Audio2Mel(win_length=2 ** i, hop_length=2 ** i // 4, n_mel_channels=64, sampling_rate=sample_rate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 26, in __init__
+    mel_basis = librosa.filters.mel(sampling_rate, n_fft, n_mel_channels, mel_fmin, mel_fmax)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: mel() takes 0 positional arguments but 5 were given
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 35, in total_loss
+    fft = Audio2Mel(win_length=2 ** i, hop_length=2 ** i // 4, n_mel_channels=64, sampling_rate=sample_rate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 26, in __init__
+    mel_basis = librosa.filters.mel(sampling_rate = 22050, n_fft = 1024, n_mel_channels = 80, mel_fmin = 0.0, mel_fmax = None)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: mel() got an unexpected keyword argument 'sampling_rate'
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 35, in total_loss
+    fft = Audio2Mel(win_length=2 ** i, hop_length=2 ** i // 4, n_mel_channels=64, sampling_rate=sample_rate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 26, in __init__
+    mel_basis = librosa.filters.mel(sr = 22050, n_fft = 1024, n_mel_channels = 80, mel_fmin = 0.0, mel_fmax = None)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: mel() got an unexpected keyword argument 'n_mel_channels'
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 35, in total_loss
+    fft = Audio2Mel(win_length=2 ** i, hop_length=2 ** i // 4, n_mel_channels=64, sampling_rate=sample_rate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 26, in __init__
+    mel_basis = librosa.filters.mel(sr = sampling_rates, n_fft = 1024, n_mel = n_mel_channels, fmin = 0.0, fmax = None)
+                                         ^^^^^^^^^^^^^^
+NameError: name 'sampling_rates' is not defined. Did you mean: 'sampling_rate'?
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 35, in total_loss
+    fft = Audio2Mel(win_length=2 ** i, hop_length=2 ** i // 4, n_mel_channels=64, sampling_rate=sample_rate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 26, in __init__
+    mel_basis = librosa.filters.mel(sr = sampling_rate, n_fft = 1024, n_mel = n_mel_channels, fmin = 0.0, fmax = None)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: mel() got an unexpected keyword argument 'n_mel'
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 36, in total_loss
+    loss = loss + l1Loss(fft(wav1), fft(wav2)) + l2Loss(fft(wav1), fft(wav2))
+                         ^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1502, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1511, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 39, in forward
+    fft = torch.stft(
+          ^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\functional.py", line 651, in stft
+    return _VF.stft(input, n_fft, hop_length, win_length, window,  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: stft requires the return_complex parameter be given for real inputs, and will further require that return_complex=True in a future PyTorch release.
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 36, in total_loss
+    loss = loss + l1Loss(fft(wav1), fft(wav2)) + l2Loss(fft(wav1), fft(wav2))
+                         ^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1502, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1511, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 48, in forward
+    mel_output = torch.matmul(self.mel_basis, torch.sum(torch.pow(fft, 2), dim=[-1]))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (64x513 and 5x513)
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 36, in total_loss
+    loss = loss + l1Loss(fft(wav1), fft(wav2)) + l2Loss(fft(wav1), fft(wav2))
+                         ^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1502, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1511, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 48, in forward
+    mel_output = torch.matmul(self.mel_basis, torch.transpose(torch.sum(torch.pow(fft, 2), dim=[-1]),0,1))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: expected mat1 and mat2 to have the same dtype, but got: float != struct c10::complex<float>
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+tensor([[1.2276e+02+1.0805e-05j, 1.2260e+02-1.7872e-03j, 1.2211e+02-3.5509e-03j,
+          ..., 7.4635e-03+1.1749e-06j, 7.4993e-03+5.7310e-07j,
+         7.5112e-03+9.7990e-11j],
+        [5.2847e+02+4.5905e-05j, 5.2779e+02-1.6754e-03j, 5.2574e+02-2.9791e-03j,
+          ..., 6.1682e-01-8.8932e-04j, 6.1960e-01-4.4709e-04j,
+         6.2053e-01+2.1016e-08j],
+        [4.2269e+02+3.7326e-05j, 4.2215e+02+3.1283e-03j, 4.2055e+02+6.1792e-03j,
+          ..., 4.6090e-03-3.7326e-06j, 4.6323e-03-1.8923e-06j,
+         4.6401e-03-1.5270e-11j],
+        [4.9281e+02+4.2625e-05j, 4.9218e+02+5.2488e-03j, 4.9031e+02+1.0340e-02j,
+          ..., 6.9803e-03+1.1479e-06j, 7.0153e-03+5.4178e-07j,
+         7.0270e-03+6.3380e-11j],
+        [9.5271e+02+8.4805e-05j, 9.5149e+02-3.3289e-05j, 9.4784e+02-1.7697e-04j,
+          ..., 1.3317e-02-4.2990e-06j, 1.3388e-02-2.1819e-06j,
+         1.3411e-02-7.9597e-11j]], device='cuda:0')
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 36, in total_loss
+    loss = loss + l1Loss(fft(wav1), fft(wav2)) + l2Loss(fft(wav1), fft(wav2))
+                         ^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1502, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1511, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 49, in forward
+    mel_output = torch.matmul(self.mel_basis, torch.transpose(torch.sum(torch.pow(fft, 2), dim=[-1]),0,1))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: expected mat1 and mat2 to have the same dtype, but got: float != struct c10::complex<float>
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+tensor([[1.2474e+02+1.1026e-05j, 1.2458e+02-2.3866e-03j, 1.2409e+02-4.7542e-03j,
+          ..., 3.8182e-03+1.3071e-07j, 3.8380e-03+7.6689e-08j,
+         3.8447e-03+1.7606e-10j],
+        [6.1055e+02+5.4606e-05j, 6.0976e+02-6.6330e-03j, 6.0739e+02-1.3191e-02j,
+          ..., 4.7114e-02+1.7101e-05j, 4.7373e-02+8.9322e-06j,
+         4.7459e-02+1.4842e-09j],
+        [6.8839e+02+5.6108e-05j, 6.8752e+02-2.6777e-02j, 6.8491e+02-5.3456e-02j,
+          ..., 6.8076e-02+1.9729e-05j, 6.8455e-02+9.7699e-06j,
+         6.8582e-02-8.1796e-10j],
+        [2.9592e+02+2.6163e-05j, 2.9554e+02-7.0221e-03j, 2.9442e+02-1.4010e-02j,
+          ..., 2.2886e-02-2.8888e-06j, 2.3011e-02-1.4627e-06j,
+         2.3053e-02+2.5152e-10j],
+        [1.0021e+02+8.8346e-06j, 1.0008e+02+1.0809e-03j, 9.9687e+01+2.1362e-03j,
+          ..., 1.6737e-03-6.4718e-07j, 1.6833e-03-3.3657e-07j,
+         1.6865e-03+2.5480e-11j]], device='cuda:0')
+tensor([[  8.4143+7.6274e-07j,   8.4014+3.6898e-04j,   8.3629+7.2739e-04j,
+          ...,  21.1459-1.1710e-02j,  21.2316-5.8879e-03j,
+          21.2602+3.6858e-10j],
+        [ 47.6422+4.5707e-06j,  47.5704+4.1504e-03j,  47.3555+8.1641e-03j,
+          ..., 107.4992-6.5235e-02j, 107.9345-3.2797e-02j,
+         108.0800-8.6250e-09j],
+        [ 46.2883+4.4322e-06j,  46.2183+3.1770e-03j,  46.0089+6.2437e-03j,
+          ..., 104.1497-6.0858e-02j, 104.5708-3.0613e-02j,
+         104.7115-5.3097e-09j],
+        [ 21.3269+1.9406e-06j,  21.2942+1.0510e-03j,  21.1963+2.0637e-03j,
+          ...,  50.8025-2.9772e-02j,  51.0080-1.4967e-02j,
+          51.0768-1.3234e-09j],
+        [  7.3454+7.2767e-07j,   7.3346+6.9680e-04j,   7.3024+1.3783e-03j,
+          ...,  14.7207-8.0953e-03j,  14.7804-4.0715e-03j,
+          14.8004+8.4961e-11j]], device='cuda:0', grad_fn=<SumBackward1>)
+tensor([[1.2474e+02+1.1026e-05j, 1.2458e+02-2.3866e-03j, 1.2409e+02-4.7542e-03j,
+          ..., 3.8182e-03+1.3071e-07j, 3.8380e-03+7.6689e-08j,
+         3.8447e-03+1.7606e-10j],
+        [6.1055e+02+5.4606e-05j, 6.0976e+02-6.6330e-03j, 6.0739e+02-1.3191e-02j,
+          ..., 4.7114e-02+1.7101e-05j, 4.7373e-02+8.9322e-06j,
+         4.7459e-02+1.4842e-09j],
+        [6.8839e+02+5.6108e-05j, 6.8752e+02-2.6777e-02j, 6.8491e+02-5.3456e-02j,
+          ..., 6.8076e-02+1.9729e-05j, 6.8455e-02+9.7699e-06j,
+         6.8582e-02-8.1796e-10j],
+        [2.9592e+02+2.6163e-05j, 2.9554e+02-7.0221e-03j, 2.9442e+02-1.4010e-02j,
+          ..., 2.2886e-02-2.8888e-06j, 2.3011e-02-1.4627e-06j,
+         2.3053e-02+2.5152e-10j],
+        [1.0021e+02+8.8346e-06j, 1.0008e+02+1.0809e-03j, 9.9687e+01+2.1362e-03j,
+          ..., 1.6737e-03-6.4718e-07j, 1.6833e-03-3.3657e-07j,
+         1.6865e-03+2.5480e-11j]], device='cuda:0')
+tensor([[  8.4143+7.6274e-07j,   8.4014+3.6898e-04j,   8.3629+7.2739e-04j,
+          ...,  21.1459-1.1710e-02j,  21.2316-5.8879e-03j,
+          21.2602+3.6858e-10j],
+        [ 47.6422+4.5707e-06j,  47.5704+4.1504e-03j,  47.3555+8.1641e-03j,
+          ..., 107.4992-6.5235e-02j, 107.9345-3.2797e-02j,
+         108.0800-8.6250e-09j],
+        [ 46.2883+4.4322e-06j,  46.2183+3.1770e-03j,  46.0089+6.2437e-03j,
+          ..., 104.1497-6.0858e-02j, 104.5708-3.0613e-02j,
+         104.7115-5.3097e-09j],
+        [ 21.3269+1.9406e-06j,  21.2942+1.0510e-03j,  21.1963+2.0637e-03j,
+          ...,  50.8025-2.9772e-02j,  51.0080-1.4967e-02j,
+          51.0768-1.3234e-09j],
+        [  7.3454+7.2767e-07j,   7.3346+6.9680e-04j,   7.3024+1.3783e-03j,
+          ...,  14.7207-8.0953e-03j,  14.7804-4.0715e-03j,
+          14.8004+8.4961e-11j]], device='cuda:0', grad_fn=<SumBackward1>)
+tensor([[2.1823e+02+1.9175e-05j, 2.1709e+02+9.4017e-03j, 2.1371e+02+1.9062e-02j,
+          ..., 2.5978e-03+2.2875e-06j, 2.6533e-03+1.3006e-06j,
+         2.6720e-03+6.5066e-11j],
+        [1.0605e+03+9.5090e-05j, 1.0549e+03+1.4002e-02j, 1.0382e+03+2.6534e-02j,
+          ..., 3.0707e-02+1.4736e-04j, 3.1376e-02+7.4290e-05j,
+         3.1601e-02+2.8986e-10j],
+        [1.3370e+03+1.0883e-04j, 1.3302e+03-2.2731e-01j, 1.3100e+03-4.4869e-01j,
+          ..., 4.1490e-02+1.5042e-04j, 4.2388e-02+7.6326e-05j,
+         4.2692e-02-1.7035e-09j],
+        [5.5316e+02+4.8927e-05j, 5.5031e+02-6.7952e-03j, 5.4184e+02-1.3436e-02j,
+          ..., 1.3009e-02-6.2805e-06j, 1.3306e-02-2.7032e-06j,
+         1.3407e-02+2.0908e-10j],
+        [1.7592e+02+1.5459e-05j, 1.7500e+02-2.6603e-03j, 1.7227e+02-5.3380e-03j,
+          ..., 9.5344e-04-1.5940e-06j, 9.7678e-04-8.2642e-07j,
+         9.8467e-04+4.1382e-12j]], device='cuda:0')
+tensor([[  9.8227+8.6615e-07j,   9.7650+3.6178e-03j,   9.5937+6.8671e-03j,
+          ...,  36.1795+2.4817e-02j,  36.7463+1.2782e-02j,
+          36.9370-1.5438e-10j],
+        [ 56.9467+5.4737e-06j,  56.6156+1.9327e-02j,  55.6330+3.8319e-02j,
+          ..., 184.1392+8.7471e-02j, 187.0232+4.5369e-02j,
+         187.9936-1.7264e-10j],
+        [ 56.6934+5.4319e-06j,  56.3677+2.2243e-02j,  55.4008+4.4754e-02j,
+          ..., 180.2802+7.5936e-02j, 183.0991+3.9632e-02j,
+         184.0475-1.0118e-09j],
+        [ 24.2429+2.2334e-06j,  24.0997+1.1907e-02j,  23.6748+2.3849e-02j,
+          ...,  87.4763+3.9014e-02j,  88.8443+2.0278e-02j,
+          89.3046-7.6208e-11j],
+        [  9.6750+9.6842e-07j,   9.6202+1.1611e-03j,   9.4574+2.1673e-03j,
+          ...,  25.1831+1.1620e-02j,  25.5775+6.0098e-03j,
+          25.7102-8.3453e-11j]], device='cuda:0', grad_fn=<SumBackward1>)
+tensor([[2.1823e+02+1.9175e-05j, 2.1709e+02+9.4017e-03j, 2.1371e+02+1.9062e-02j,
+          ..., 2.5978e-03+2.2875e-06j, 2.6533e-03+1.3006e-06j,
+         2.6720e-03+6.5066e-11j],
+        [1.0605e+03+9.5090e-05j, 1.0549e+03+1.4002e-02j, 1.0382e+03+2.6534e-02j,
+          ..., 3.0707e-02+1.4736e-04j, 3.1376e-02+7.4290e-05j,
+         3.1601e-02+2.8986e-10j],
+        [1.3370e+03+1.0883e-04j, 1.3302e+03-2.2731e-01j, 1.3100e+03-4.4869e-01j,
+          ..., 4.1490e-02+1.5042e-04j, 4.2388e-02+7.6326e-05j,
+         4.2692e-02-1.7035e-09j],
+        [5.5316e+02+4.8927e-05j, 5.5031e+02-6.7952e-03j, 5.4184e+02-1.3436e-02j,
+          ..., 1.3009e-02-6.2805e-06j, 1.3306e-02-2.7032e-06j,
+         1.3407e-02+2.0908e-10j],
+        [1.7592e+02+1.5459e-05j, 1.7500e+02-2.6603e-03j, 1.7227e+02-5.3380e-03j,
+          ..., 9.5344e-04-1.5940e-06j, 9.7678e-04-8.2642e-07j,
+         9.8467e-04+4.1382e-12j]], device='cuda:0')
+tensor([[  9.8227+8.6615e-07j,   9.7650+3.6178e-03j,   9.5937+6.8671e-03j,
+          ...,  36.1795+2.4817e-02j,  36.7463+1.2782e-02j,
+          36.9370-1.5438e-10j],
+        [ 56.9467+5.4737e-06j,  56.6156+1.9327e-02j,  55.6330+3.8319e-02j,
+          ..., 184.1392+8.7471e-02j, 187.0232+4.5369e-02j,
+         187.9936-1.7264e-10j],
+        [ 56.6934+5.4319e-06j,  56.3677+2.2243e-02j,  55.4008+4.4754e-02j,
+          ..., 180.2802+7.5936e-02j, 183.0991+3.9632e-02j,
+         184.0475-1.0118e-09j],
+        [ 24.2429+2.2334e-06j,  24.0997+1.1907e-02j,  23.6748+2.3849e-02j,
+          ...,  87.4763+3.9014e-02j,  88.8443+2.0278e-02j,
+          89.3046-7.6208e-11j],
+        [  9.6750+9.6842e-07j,   9.6202+1.1611e-03j,   9.4574+2.1673e-03j,
+          ...,  25.1831+1.1620e-02j,  25.5775+6.0098e-03j,
+          25.7102-8.3453e-11j]], device='cuda:0', grad_fn=<SumBackward1>)
+tensor([[3.5667e+02+3.1341e-05j, 3.4901e+02-2.2954e-03j, 3.2688e+02-1.8350e-02j,
+          ..., 1.5156e-03+6.4717e-06j, 1.6492e-03+2.5437e-06j,
+         1.6959e-03+2.2401e-13j],
+        [1.4180e+03+1.2862e-04j, 1.3849e+03-1.0795e-02j, 1.2894e+03-4.4490e-02j,
+          ..., 2.7118e-02+8.3385e-07j, 2.9120e-02-2.6748e-06j,
+         2.9819e-02+2.7683e-10j],
+        [2.4286e+03+1.9682e-04j, 2.3784e+03-1.9157e+00j, 2.2332e+03-3.6250e+00j,
+          ..., 2.6107e-02+3.8001e-04j, 2.8374e-02+2.0533e-04j,
+         2.9168e-02-1.9638e-09j],
+        [9.2489e+02+8.2043e-05j, 9.0518e+02-1.1739e-02j, 8.4823e+02-2.9799e-02j,
+          ..., 6.7422e-03-1.1127e-04j, 7.3160e-03-5.5218e-05j,
+         7.5178e-03+7.4636e-11j],
+        [2.6218e+02+2.3052e-05j, 2.5632e+02-1.5845e-02j, 2.3943e+02-1.2274e-02j,
+          ..., 3.6984e-04-2.9976e-06j, 4.0955e-04-1.3259e-06j,
+         4.2346e-04+4.3175e-12j]], device='cuda:0')
+tensor([[ 12.1700+1.0801e-06j,  11.8911+1.1418e-02j,  11.0876+2.0616e-02j,
+          ...,  64.6920+4.5981e-02j,  68.8011+2.3035e-02j,
+          70.2227+0.0000e+00j],
+        [ 73.7132+7.1835e-06j,  72.0600+7.3378e-03j,  67.2983+1.8152e-02j,
+          ..., 327.9597+1.4018e-02j, 348.7444+6.0650e-03j,
+         355.9326+0.0000e+00j],
+        [ 74.9763+7.2790e-06j,  73.3030-1.5491e-03j,  68.4827-4.8839e-03j,
+          ..., 321.8725-1.3025e-01j, 342.2693-6.9947e-02j,
+         349.3228+0.0000e+00j],
+        [ 28.8788+2.6848e-06j,  28.2126+2.1146e-02j,  26.2948+3.8531e-02j,
+          ..., 155.9816-6.9956e-03j, 165.8749-3.9034e-03j,
+         169.2964+0.0000e+00j],
+        [ 13.9816+1.4651e-06j,  13.6771-2.9669e-03j,  12.7993-3.7154e-03j,
+          ...,  45.1209-4.6825e-02j,  47.9733-2.4339e-02j,
+          48.9594+0.0000e+00j]], device='cuda:0', grad_fn=<SumBackward1>)
+tensor([[3.5667e+02+3.1341e-05j, 3.4901e+02-2.2954e-03j, 3.2688e+02-1.8350e-02j,
+          ..., 1.5156e-03+6.4717e-06j, 1.6492e-03+2.5437e-06j,
+         1.6959e-03+2.2401e-13j],
+        [1.4180e+03+1.2862e-04j, 1.3849e+03-1.0795e-02j, 1.2894e+03-4.4490e-02j,
+          ..., 2.7118e-02+8.3385e-07j, 2.9120e-02-2.6748e-06j,
+         2.9819e-02+2.7683e-10j],
+        [2.4286e+03+1.9682e-04j, 2.3784e+03-1.9157e+00j, 2.2332e+03-3.6250e+00j,
+          ..., 2.6107e-02+3.8001e-04j, 2.8374e-02+2.0533e-04j,
+         2.9168e-02-1.9638e-09j],
+        [9.2489e+02+8.2043e-05j, 9.0518e+02-1.1739e-02j, 8.4823e+02-2.9799e-02j,
+          ..., 6.7422e-03-1.1127e-04j, 7.3160e-03-5.5218e-05j,
+         7.5178e-03+7.4636e-11j],
+        [2.6218e+02+2.3052e-05j, 2.5632e+02-1.5845e-02j, 2.3943e+02-1.2274e-02j,
+          ..., 3.6984e-04-2.9976e-06j, 4.0955e-04-1.3259e-06j,
+         4.2346e-04+4.3175e-12j]], device='cuda:0')
+tensor([[ 12.1700+1.0801e-06j,  11.8911+1.1418e-02j,  11.0876+2.0616e-02j,
+          ...,  64.6920+4.5981e-02j,  68.8011+2.3035e-02j,
+          70.2227+0.0000e+00j],
+        [ 73.7132+7.1835e-06j,  72.0600+7.3378e-03j,  67.2983+1.8152e-02j,
+          ..., 327.9597+1.4018e-02j, 348.7444+6.0650e-03j,
+         355.9326+0.0000e+00j],
+        [ 74.9763+7.2790e-06j,  73.3030-1.5491e-03j,  68.4827-4.8839e-03j,
+          ..., 321.8725-1.3025e-01j, 342.2693-6.9947e-02j,
+         349.3228+0.0000e+00j],
+        [ 28.8788+2.6848e-06j,  28.2126+2.1146e-02j,  26.2948+3.8531e-02j,
+          ..., 155.9816-6.9956e-03j, 165.8749-3.9034e-03j,
+         169.2964+0.0000e+00j],
+        [ 13.9816+1.4651e-06j,  13.6771-2.9669e-03j,  12.7993-3.7154e-03j,
+          ...,  45.1209-4.6825e-02j,  47.9733-2.4339e-02j,
+          48.9594+0.0000e+00j]], device='cuda:0', grad_fn=<SumBackward1>)
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 36, in total_loss
+    loss = loss + l1Loss(fft(wav1), fft(wav2)) + l2Loss(fft(wav1), fft(wav2))
+                         ^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1502, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1511, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 39, in forward
+    fft = torch.stft(
+          ^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\functional.py", line 651, in stft
+    return _VF.stft(input, n_fft, hop_length, win_length, window,  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 16.00 MiB. GPU 0 has a total capacty of 6.00 GiB of which 0 bytes is free. Of the allocated memory 5.12 GiB is allocated by PyTorch, and 208.25 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 152, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 145, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 126, in train
+    loss = total_loss(fmap_real, logits_fake, fmap_fake, input_wav, output)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 36, in total_loss
+    loss = loss + l1Loss(fft(wav1), fft(wav2)) + l2Loss(fft(wav1), fft(wav2))
+                                                        ^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1502, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\modules\module.py", line 1511, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\audio_to_mel.py", line 39, in forward
+    fft = torch.stft(
+          ^^^^^^^^^^^
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\functional.py", line 651, in stft
+    return _VF.stft(input, n_fft, hop_length, win_length, window,  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 16.00 MiB. GPU 0 has a total capacty of 6.00 GiB of which 0 bytes is free. Of the allocated memory 5.14 GiB is allocated by PyTorch, and 176.44 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+PS D:\工作\BrainCo\EnCodec_Trainer-master> python training.py
+C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\nn\utils\weight_norm.py:30: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+----------------------------------------Epoch: 1----------------------------------------
+(3427794944, 6441926656)
+Train Epoch: 1 [0/35216 (0%)]
+(1896873984, 6441926656)
+Train Epoch: 1 [200/35216 (1%)]
+(2041577472, 6441926656)
+Train Epoch: 1 [400/35216 (1%)]
+(2035286016, 6441926656)
+Train Epoch: 1 [600/35216 (2%)]
+(2039480320, 6441926656)
+Train Epoch: 1 [800/35216 (2%)]
+(2041577472, 6441926656)
+Train Epoch: 1 [1000/35216 (3%)]
+(2035286016, 6441926656)
+Train Epoch: 1 [1200/35216 (3%)]
+(2041577472, 6441926656)
+Train Epoch: 1 [1400/35216 (4%)]
+(1896873984, 6441926656)
+Train Epoch: 1 [1600/35216 (5%)]
+(1890582528, 6441926656)
+Train Epoch: 1 [1800/35216 (5%)]
+(2037383168, 6441926656)
+Train Epoch: 1 [2000/35216 (6%)]
+(2041577472, 6441926656)
+Train Epoch: 1 [2200/35216 (6%)]
+(1886388224, 6441926656)
+Train Epoch: 1 [2400/35216 (7%)]
+(2035286016, 6441926656)
+Train Epoch: 1 [2600/35216 (7%)]
+(2031091712, 6441926656)
+Train Epoch: 1 [2800/35216 (8%)]
+(2041577472, 6441926656)
+Train Epoch: 1 [3000/35216 (9%)]
+(2031091712, 6441926656)
+Train Epoch: 1 [3200/35216 (9%)]
+(2037383168, 6441926656)
+Train Epoch: 1 [3400/35216 (10%)]
+(2043674624, 6441926656)
+Train Epoch: 1 [3600/35216 (10%)]
+(2028994560, 6441926656)
+Train Epoch: 1 [3800/35216 (11%)]
+Traceback (most recent call last):
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 158, in <module>
+    training(max_epoch=MAX_EPOCH, log_interval=100, fixed_length=0, batch_size=BATCH_SIZE, tensor_cut=TENSOR_CUT)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 151, in training
+    train(epoch)
+  File "D:\工作\BrainCo\EnCodec_Trainer-master\training.py", line 133, in train
+    loss_enc.backward(retain_graph=True)
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\_tensor.py", line 491, in backward
+    torch.autograd.backward(
+  File "C:\Users\15331\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\autograd\__init__.py", line 204, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+PS D:\工作\BrainCo\EnCodec_Trainer-master>
