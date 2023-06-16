@@ -57,7 +57,7 @@ class ResidualVectorQuantizer(nn.Module):
         self.kmeans_iters = kmeans_iters
         self.threshold_ema_dead_code = threshold_ema_dead_code
         self.training = True
-        self.model = ResidualVectorQuantization(
+        self.vq = ResidualVectorQuantization(
             dim=self.dimension,
             codebook_size=self.bins,
             num_quantizers=self.n_q,
@@ -80,7 +80,7 @@ class ResidualVectorQuantizer(nn.Module):
         """
         bw_per_q = self.get_bandwidth_per_quantizer(sample_rate)
         n_q = self.get_num_quantizers_for_bandwidth(sample_rate, bandwidth)
-        quantized, codes, commit_loss = self.model(x, n_q=n_q)
+        quantized, codes, commit_loss = self.vq(x, n_q=n_q)
         bw = torch.tensor(n_q * bw_per_q).to(x)
         return QuantizedResult(quantized, codes, bw, penalty=torch.mean(commit_loss))
 
@@ -104,11 +104,11 @@ class ResidualVectorQuantizer(nn.Module):
         and returns indices for each quantizer.
         """
         n_q = self.get_num_quantizers_for_bandwidth(sample_rate, bandwidth)
-        codes = self.model.encode(x, n_q=n_q)
+        codes = self.vq.encode(x, n_q=n_q)
         return codes
 
     def decode(self, codes: torch.Tensor) -> torch.Tensor:
         """Decode the given codes to the quantized representation.
         """
-        quantized = self.model.decode(codes)
+        quantized = self.vq.decode(codes)
         return quantized

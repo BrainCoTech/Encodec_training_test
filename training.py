@@ -4,6 +4,7 @@ import customAudioDataset as data
 import os
 import torch.backends.cudnn as cudnn
 
+from pathlib import Path
 from clearml import task
 from clearml import datasets
 
@@ -107,9 +108,10 @@ def training(max_epoch = 5, log_interval = 20, fixed_length = 0, tensor_cut=1000
     #            target_bandwidths, sample_rate, channels,
     #            causal=False, model_norm='time_group_norm', audio_normalize=True,
     #            segment=1., name='my_encodec_24khz') # Initial model
-    model_name = 'my_encodec_24khz' # 'encodec_24khz'
-    model = MODELS[model_name](checkpoint_name='saves/batch29_cut100000_epoch10.pth').to('cpu') # A pre-trained model using e-gmd dataset
-    
+    #model_name = 'my_encodec_24khz' # 'encodec_24khz'
+    #model = MODELS[model_name](checkpoint_name='saves/batch29_cut100000_epoch10.pth').to('cpu') # A pre-trained model using e-gmd dataset
+    model = EncodecModel.encodec_model_24khz(repository=Path("saves"))
+    #model = MODELS[model_name](checkpoint_name='saves/encodec_24khz-d7cc33bc.th').to('cpu')
     ### Freeze part of model
     # for param in model.parameters():
     #     print(param.requires_grad)
